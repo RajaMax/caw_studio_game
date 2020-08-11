@@ -1,0 +1,21 @@
+<div *ngIf='gameOver'>
+  <span class="gameOver">Game Over!!</span> <button class='restart' (click)='gameRestart()'>Restart</button><br>
+  <span class="countWord">your moves are </span><span class="count">{{heroMoveCount}}</span>
+</div>
+<h1 *ngIf='initialStart'>
+  <span class='input'>Width : </span> <input type="number" [(ngModel)]="width" id="width" name="width">
+  <span class="error" *ngIf='submitted && width<2'>Please Enter 2 or above</span>
+  <br>
+  <span class='input'>Height: </span> <input type="number" [(ngModel)]="height" name="tentacles">
+  <span class="error" *ngIf='submitted && height<2'>Please Enter 2 or above</span>
+  <br>
+  <button class='restart' (click)='gameStart()'>Start</button>
+</h1>
+<table *ngIf='gameStarted'>
+  <tr *ngFor="let row of board; let j = index">
+    <td *ngFor="let box of row; let i = index">
+      <span *ngIf="box.isEnemy">💀</span>
+      <span *ngIf="j==hero.y&& i ==hero.x">🦸</span>
+    </td>
+  </tr>
+</table>
