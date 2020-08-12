@@ -11,11 +11,15 @@
   <br>
   <button class='restart' (click)='gameStart()'>Start</button>
 </h1>
-<table *ngIf='gameStarted'>
-  <tr *ngFor="let row of board; let j = index">
-    <td *ngFor="let box of row; let i = index">
-      <span *ngIf="box.isEnemy">💀</span>
-      <span *ngIf="j==hero.y&& i ==hero.x">🦸</span>
-    </td>
-  </tr>
-</table>
+<div *ngIf='gameStarted'>
+  <span>Hero (you) -> 🦸 </span><br>
+  <span>Enemy -> 💀 </span>
+  <table>
+    <tr *ngFor="let row of board; let j = index">
+      <td *ngFor="let box of row; let i = index">
+        <span *ngIf="box.isEnemy">💀</span>
+        <span *ngIf="j==hero.y&& i ==hero.x">🦸</span>
+      </td>
+    </tr>
+  </table>
+</div>
